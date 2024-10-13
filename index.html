@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome.co</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    .image-gallery {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 20px 0;
+        background-color: #222;
+    }
+
+    .image-gallery table {
+        width: 100%;
+        border-spacing: 20px;
+    }
+
+    .image-gallery td {
+        width: 300px; /* Adjust the width of each image cell */
+        text-align: center;
+    }
+
+    .image-gallery img {
+        width: 100%;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .image-gallery img:hover {
+        transform: scale(1.05);
+    }
+
+    .scroll-container {
+        overflow-x: scroll;
+        display: flex;
+        justify-content: flex-start;
+        scroll-behavior: smooth;
+    }
+
+    /* Hide the scrollbar */
+    .scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scroll-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <h1>Awesome.co</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#Collection">Collections</a></li>
+                <li><a href="#about">About Us</a></li>    
+            </ul>
+        </nav>
+
+        <section id="home" class="hero-section">
+            <div class="hero-text">
+                <h1>Welcome to Awesome.co</h1>
+                <p>Discover Premium Fashion</p>
+                <a href="https://www.instagram.com/_awesome.co?igsh=MXhwaG56cnJ0YTVnbw==" target="_blank" class="cta-button">Get Yours Now</a>
+            </div>
+        </section>
+
+        
+        <hr>
+        <section id="Collection" class="image-gallery">
+            <h2 style="text-align: center; padding-bottom: 10px;">Our Collection</h2>
+            <div class="scroll-container">
+                <table>
+                    <tr>
+                        <td><img src="images/image1.jpeg"></td>
+                        <td><img src="images/image4.jpeg"></td>
+                        <td><img src="images/image9.jpg"></td>
+                        <td><img src="images/image13.jpg"></td>
+                        <td><img src="images/image14.jpeg"></td>
+                        <td><img src="images/image21.jpg"></td>
+
+                       
+                    </tr>
+                </table>
+            </div>
+        <hr>    
+        </section>
+        <section id="about" class="about-section">
+            <h2>Our Story</h2>
+            <p >At Awesome.co, we believe that clothing is more than just fabric — it’s a way to express individuality. That’s why we offer high-quality, customized clothing tailored to your style. Whether it’s personalized hoodies, t-shirts, or other apparel, we focus on craftsmanship and premium materials to ensure every piece feels special and looks amazing. Your uniqueness, our canvas — together, we create something truly awesome.</p>
+        </section>
+
+        <footer id="contact">
+            <h3>Stay Connected</h3>
+            <p>Email us: awesome.comltd@gmail.com</p>
+            <p>Phone Number: 9483234360</p>
+            <p>Alternate Number: 8792124374</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
