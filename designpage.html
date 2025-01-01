@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Selection Gallery</title>
+    <link href="assets/img/LogoAwesome.png" rel="icon">
+    <link href="assets/img/AwesomeLogo.ico" rel="apple-touch-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 1rem;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .back-button {
+            margin: 1rem;
+            text-align: center;
+        }
+
+        .back-button button {
+            background: #333;
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .back-button button:hover {
+            background: #555;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 300px;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .design-number {
+            text-align: center;
+            padding: 0.5rem 0;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .hover-buttons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            background: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .hover-buttons button {
+            background: #ffffff;
+            color: #333;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .hover-buttons button:hover {
+            background: #333;
+            color: #ffffff;
+        }
+
+        .gallery-item:hover .hover-buttons {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: 200px;
+                height: 250px;
+            }
+
+            .gallery-item img {
+                height: 200px;
+            }
+
+            .hover-buttons button {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .design-number {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                width: 150px;
+                height: 200px;
+            }
+
+            .gallery-item img {
+                height: 150px;
+            }
+
+            .hover-buttons button {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .design-number {
+                font-size: 0.8rem;
+            }
+        }
+        .floating-section {
+            margin: 20px auto; /* Space around sections */
+            padding: 20px; /* Internal spacing */
+            background: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow effect */
+            backdrop-filter: blur(10px); /* Blur effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+            }
+
+            /* Add some spacing to the sections for better layout */
+        .section {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Select a Design</h1>
+    </header>
+    <div class="back-button">
+        <button onclick="history.back()">Go Back</button>
+    </div>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        // Array of image filenames (place your images in the "designs" folder)
+        const designs = Array.from({ length: 200 }, (_, i) => `design${i + 1}.jpg`);
+
+        // Directory containing design images
+        const designDir = "designs/";
+
+        // Reference to the gallery container
+        const gallery = document.getElementById("gallery");
+
+        // Populate the gallery with images
+        designs.forEach((design, index) => {
+            const galleryItem = document.createElement("div");
+            galleryItem.classList.add("gallery-item");
+
+            galleryItem.innerHTML = `
+                <img src="${designDir}${design}" alt="${design}">
+                <div class="design-number">Design ${index + 1}</div>
+                <div class="hover-buttons">
+                    <button onclick="selectDesign('${design}', 'tshirt')">T-shirt</button>
+                    <button onclick="selectDesign('${design}', 'hoodie')">Hoodie</button>
+                    <button onclick="selectDesign('${design}', 'jacket')">Jacket</button>
+                    <button onclick="selectDesign('${design}', 'oversize')">Oversize</button>
+                    <button onclick="selectDesign('${design}', 'polos')">Polos</button>
+                </div>
+            `;
+
+            gallery.appendChild(galleryItem);
+        });
+
+        // Function to handle design selection
+        function selectDesign(design, type) {
+            const pageLink = `${type}.html`;
+            window.location.href = pageLink;
+        }
+    </script>
+</body>
+</html>
